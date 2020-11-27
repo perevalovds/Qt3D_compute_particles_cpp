@@ -7,18 +7,7 @@
 *
 */
 
-
-
-
-// INCLUDES
-
-
 #include "computeframegraph.h"
-
-
-
-// QT INCLUDES
-
 
 #include <Qt3DRender/QRenderSurfaceSelector>
 #include <Qt3DRender/QClearBuffers>
@@ -32,24 +21,14 @@
 #include <Qt3DRender/QViewport>
 #include <Qt3DCore/QNode>
 
-
-
-// USED NAMESPACES
-
-
-using namespace COMPUTESHADER;
 using namespace Qt3DRender;
 
-
-
-// DEFINE MEMBER METHODS
-
-
+//---------------------------------------------------------------------
 ComputeFramegraph::ComputeFramegraph(Qt3DCore::QNode *parent)
     : QViewport(parent)
     , m_pSurfaceSelector(new QRenderSurfaceSelector(this))
     , m_pClearBuffers(new QClearBuffers(m_pSurfaceSelector))
-    , m_pNoDraw(new QNoDraw(m_pClearBuffers))
+    //, m_pNoDraw(new QNoDraw(m_pClearBuffers))
     , m_pDispatchCompute(new QDispatchCompute(m_pSurfaceSelector))
     , m_pComputeFilter(new QTechniqueFilter(m_pDispatchCompute))
     , m_pCameraSelector(new QCameraSelector(m_pSurfaceSelector))
@@ -61,26 +40,11 @@ ComputeFramegraph::ComputeFramegraph(Qt3DCore::QNode *parent)
     init();
 }
 
-
-
-
-void ComputeFramegraph::setWorkGroups(const int x, const int y, const int z)
-{
-    m_pDispatchCompute->setWorkGroupX(x);
-    m_pDispatchCompute->setWorkGroupY(y);
-    m_pDispatchCompute->setWorkGroupZ(z);
-}
-
-
-
-
+//---------------------------------------------------------------------
 void ComputeFramegraph::setCamera(QCamera *pCamera)
 {
     m_pCameraSelector->setCamera(pCamera);
 }
-
-
-
 
 void ComputeFramegraph::init()
 {
@@ -122,5 +86,6 @@ void ComputeFramegraph::init()
 
 }
 
+//---------------------------------------------------------------------
 
 

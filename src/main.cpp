@@ -41,11 +41,11 @@ int main(int argc, char* argv[])
     particleBuffer->setData(particleByteArray);
 
     //Compute material
-    COMPUTESHADER::ComputeMaterial *computeMaterial = new COMPUTESHADER::ComputeMaterial();
+    ComputeMaterial *computeMaterial = new ComputeMaterial();
     computeMaterial->setVertexBuffer(particleBuffer);
 
     //Compute framegraph
-    COMPUTESHADER::ComputeFramegraph *framegraph = new COMPUTESHADER::ComputeFramegraph();
+    ComputeFramegraph *framegraph = new ComputeFramegraph();
 
     //compute entity
     Qt3DCore::QEntity *particleComputeEntity = new Qt3DCore::QEntity(rootEntity);
